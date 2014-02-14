@@ -1,4 +1,5 @@
 #include <SoftwareSerial.h>
+//#include <string.h>
 
 const int TX_BT = 10;
 const int RX_BT = 11;
@@ -9,38 +10,46 @@ const int PIN_GREEN = 6;
 SoftwareSerial btSerial(TX_BT, RX_BT);
 
 //Process the incoming command from Windows Phone.
-void processCommand(char* command) {     //Takes in the command buffer. char* ch = new char; creates memory for ONE character, and assigns it to variable ch. 
-//  Serial.print(command);
-//  Serial.write(command);
-//  sendCoOrdsToAPM(command);
-  if(strcmp(command,"-7.222450000") == 0) {   //strcmp : string compare. If string1 = string2 the do the following. A 0 result means there equal
-    //digitalWrite(PIN_RED, HIGH);
-    //delay(5000);
-    //digitalWrite(PIN_RED, LOW);
-  } else if(strcmp(command,"TURN_ON_GREEN") == 0) {
-    digitalWrite(PIN_GREEN, HIGH);
-    delay(5000);
-    digitalWrite(PIN_GREEN, LOW);
-  }  
+void processCommand(char* command) {     //Takes in the command buffer. char* ch = new char; creates memory for ONE character, and assigns it to variable ch.  
+  
+//  String location = command;
+//  String lattitude = location.substring(1,12);
+//  String longitude = location.substring(13,12);
+//  
+//  Serial.print("Lattitude = " + lattitude);  
+//  Serial.println("Longitude = " + longitude);
+
+//  if(strcmp(command,"-7.222450000") == 0) {   //strcmp : string compare. If string1 = string2 the do the following. A 0 result means there equal
+//  } else if(strcmp(command,"TURN_ON_GREEN") == 0) {
+//    digitalWrite(PIN_GREEN, HIGH);
+//    delay(5000);
+//  }  
 }
 
-//Send a message back to the Windows Phone.
-void sendMessage(char* message) {
-  int messageLen = strlen(message); //strlen : gets the string length. "This sentance would be result in"   32
-  if(messageLen < 256) {  
-    btSerial.write(messageLen);
-    btSerial.print(message);
-  }
-}
+
+////Send a message back to the Windows Phone.
+//void sendMessage(char* message) {
+//  int messageLen = strlen(message); //strlen : gets the string length. "This sentance would be result in"   32
+//  if(messageLen < 256) {  
+//    btSerial.write(messageLen);
+//    //btSerial.print(message);
+//  }
+//}
 
 void sendCoOrdsToAPM(char* command){
-//void sendMessage(char* coOrds) {
-  int messageLen = strlen(command); //strlen : gets the string length. "This sentance would be result in"   32
-  if(messageLen < 256) {
-    Serial.write(messageLen);
+  
+  //55.131550000-7.222450000
+//  std::string location = command;
+//  std::string lattitude = str.substr(1,12);
+//  std::string longitude = str.substr(13,12);
+  
+//  int messageLen = strlen(command); //strlen : gets the string length. "This sentance would be result in"   32
+//  if(messageLen < 256) {
+//    Serial.write(messageLen);
     //Serial.println('command');
-    } 
+   // } 
 }
+
 
 //Setup Arduino function
 void setup() {
